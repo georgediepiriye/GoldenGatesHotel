@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminRoomTypeComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +23,5 @@ Route::get('/', function () {
 
 //Admin
 Route::get('admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
+Route::get('admin/roomtypes',AdminRoomTypeComponent::class)->name('admin.roomtypes');
+Route::get('admin/create-roomtype',AdminCreateRoomTypeComponent::class)->name('admin.createroomtype');
