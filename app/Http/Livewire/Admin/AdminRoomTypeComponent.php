@@ -15,5 +15,12 @@ class AdminRoomTypeComponent extends Component
         ])->layout('layouts.adminbase');
     }
 
+    public function deleteRoomType($id){
+        $roomtype = RoomType::where('id',$id)->first();
+        $roomtype->delete();
+        session()->flash('message',"Room type Deleted Successfully!");
+
+    }
+
   
 }

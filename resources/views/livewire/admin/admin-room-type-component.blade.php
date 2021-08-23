@@ -2,8 +2,15 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Room Types
-    <a href="{{ route('admin.createroomtype') }}" style="float: right" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.createroomtype') }}" style="float: right" class="btn btn-success">Add New</a>
     </h1>
+    @if (Session::has('message'))
+        <div class="alert alert-success">
+            {{ Session::get('message') }}
+
+        </div>
+
+    @endif
     <div class="card shadow mb-4">
       
         <div class="card-body">
@@ -26,7 +33,7 @@
                                 <td>
                                     <a href="{{ route('admin.show.roomtype',['roomtype_id'=>$roomtype->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.edit.roomtype',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="3" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    <a href="#" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete this roomtype?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteRoomType({{ $roomtype->id }})"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             
