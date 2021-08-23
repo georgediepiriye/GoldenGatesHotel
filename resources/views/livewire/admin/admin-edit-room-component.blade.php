@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Add Room 
+    <h1 class="h3 mb-2 text-gray-800">Edit Room
         <a href="{{ route('admin.rooms') }}" style="float: right" class="btn btn-success">View All</a>
     </h1>
         @if (Session::has('message'))
@@ -23,14 +23,18 @@
                         <tr >
                         
                             <th>Title</th>
-                            <td><input type="text" wire:model='title' class="form-control" ></td>
-                            
+                            <td><input type="text" value="{{ $room->title }}" wire:model='title' class="form-control" ></td>
+                            {{ $room->title }}
+                          
+                            @error('title')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                             
                         </tr>
                         <tr >
                         
                             <th>Select Room type</th>
-                            <td><select wire:model="roomtype_id">
+                            <td><select wire:model="roomtype_id" value="{{ $room->title }}">
                                     <option value="0" >---Select---</option>
                                     @foreach ($roomtypes as $roomtype )
                                         <option value="{{ $roomtype->id }}">{{ Str::ucfirst($roomtype->title ) }}</option>
@@ -41,13 +45,12 @@
                             
                             
                         </tr>
-                     
                         <tr>
                             <td colspan="2">
-                                <a href="#" wire:click="addRoom" class="btn btn-primary">Submit</a>
+                                <a href="#" wire:click="updateRoom" class="btn btn-primary">Submit</a>
 
                             </td>
-                        
+                            
                         </tr>
                 
                         

@@ -4,8 +4,10 @@ use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
 use App\Http\Livewire\Admin\AdminShowRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminEditRoomTypeComponent;
+use App\Http\Livewire\Admin\AdminEditRoomComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminRoomTypeComponent;
+use App\Http\Livewire\Admin\AdminRoomComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +34,5 @@ Route::get('admin/edit-roomtype/{roomtype_id}',AdminEditRoomTypeComponent::class
 Route::get('admin/show-roomtype/{roomtype_id}',AdminShowRoomTypeComponent::class)->name('admin.show.roomtype');
 
 Route::get('admin/create-room',AdminCreateRoomComponent::class)->name('admin.createroom');
+Route::get('admin/rooms',AdminRoomComponent::class)->name('admin.rooms');
+Route::get('admin/edit-room/{room_id}',AdminEditRoomComponent::class)->name('admin.edit.room');
