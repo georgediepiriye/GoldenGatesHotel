@@ -14,4 +14,11 @@ class AdminRoomComponent extends Component
             'rooms'=>$rooms
         ])->layout('layouts.adminbase');
     }
+
+    public function deleteRoom($id){
+        $room = Room::where('id',$id)->first();
+        $room->delete();
+        session()->flash('message',"Room Deleted Successfully!");
+
+    }
 }

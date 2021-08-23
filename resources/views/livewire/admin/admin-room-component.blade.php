@@ -31,7 +31,7 @@
                                 <td>{{ $room->id }}</td>
                                 <td>{{ Str::ucfirst($room->title)  }}</td>
                                 <td>
-                                    <a href=""><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('admin.show.room',['room_id'=>$room->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.edit.room',['room_id'=>$room->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     <a href="#" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete this room?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteRoom({{ $room->id }})"><i class="fa fa-trash"></i></a>
                                 </td>
