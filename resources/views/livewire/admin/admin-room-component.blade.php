@@ -19,6 +19,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Room Type</th>
                             <th>Title</th>
                             <th>Action</th>
                             
@@ -29,11 +30,12 @@
                         @foreach ($rooms as $room)
                             <tr>
                                 <td>{{ $room->id }}</td>
+                                <td>{{Str::ucfirst($room->roomtype->title) }}</td>
                                 <td>{{ Str::ucfirst($room->title)  }}</td>
                                 <td>
-                                    <a href="{{ route('admin.show.room',['room_id'=>$room->id]) }}"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route('admin.edit.room',['room_id'=>$room->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a href="#" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete this room?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteRoom({{ $room->id }})"><i class="fa fa-trash"></i></a>
+                                   
+                                    <a href="{{ route('admin.edit.room',['room_id'=>$room->id]) }}" class="btn btn-primary" style="margin: 5px"><i class="fa fa-edit"></i></a>
+                                    <a href="#" class="btn btn-danger" style="margin: 5px"  onclick="confirm('Are you sure you want to delete this room?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteRoom({{ $room->id }})"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             

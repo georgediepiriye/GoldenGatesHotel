@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
-    public function RoomTypes(){
-        return $this->belongsTo(RoomType::class);
+    public function roomtype(){
+        return $this->belongsTo(RoomType::class,'room_types_id');
     }
 }

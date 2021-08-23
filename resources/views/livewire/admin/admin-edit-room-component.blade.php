@@ -37,7 +37,9 @@
                             <td><select wire:model="roomtype_id" value="{{ $room->title }}">
                                     <option value="0" >---Select---</option>
                                     @foreach ($roomtypes as $roomtype )
-                                        <option value="{{ $roomtype->id }}">{{ Str::ucfirst($roomtype->title ) }}</option>
+                                        <option @if ($room->id==$rootype->id) selected
+                                            
+                                        @endif value="{{ $roomtype->id }}">{{ Str::ucfirst($roomtype->title ) }}</option>
                                     @endforeach
                                    
                                 </select>
