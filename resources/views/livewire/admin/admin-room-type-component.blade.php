@@ -24,7 +24,7 @@
                                 <td>{{ $roomtype->id }}</td>
                                 <td>{{ Str::ucfirst($roomtype->title)  }}</td>
                                 <td>
-                                    <a href=""><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('admin.show.roomtype',['roomtype_id'=>$roomtype->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.edit.roomtype',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                     <a href="3" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
