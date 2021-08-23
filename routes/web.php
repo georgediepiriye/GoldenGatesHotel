@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
+use App\Http\Livewire\Admin\AdminCreateRoomComponent;
 use App\Http\Livewire\Admin\AdminShowRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminEditRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -29,3 +30,5 @@ Route::get('admin/roomtypes',AdminRoomTypeComponent::class)->name('admin.roomtyp
 Route::get('admin/create-roomtype',AdminCreateRoomTypeComponent::class)->name('admin.createroomtype');
 Route::get('admin/edit-roomtype/{roomtype_id}',AdminEditRoomTypeComponent::class)->name('admin.edit.roomtype');
 Route::get('admin/show-roomtype/{roomtype_id}',AdminShowRoomTypeComponent::class)->name('admin.show.roomtype');
+
+Route::get('admin/create-room',AdminCreateRoomComponent::class)->name('admin.createroom');

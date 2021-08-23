@@ -25,7 +25,7 @@ class AdminCreateRoomTypeComponent extends Component
           $roomType->title = $this->title;
           $roomType->details = $this->details;
           $roomType->save();
-          session()->flash('message','Roomt type created successfully');
+          session()->flash('message','Room type created successfully');
 
     }
 }
