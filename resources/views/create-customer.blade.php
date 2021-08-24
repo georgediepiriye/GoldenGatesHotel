@@ -4,7 +4,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Add Customer
-            <a href="{{ route('admin.roomtypes') }}" style="float: right" class="btn btn-success">View All</a>
+            <a href="{{ route('admin.customers') }}" style="float: right" class="btn btn-success">View All</a>
         </h1>
             @if (Session::has('message'))
                 <div class="alert alert-success">

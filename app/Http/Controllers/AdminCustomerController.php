@@ -16,7 +16,7 @@ class AdminCustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('customer',[
+        return view('customers',[
             'customers'=>$customers
         ]);
     }
@@ -58,7 +58,7 @@ class AdminCustomerController extends Controller
         $uploadedFileUrl1 = Cloudinary::upload($request->file('photo')->getRealPath())->getSecurePath();
         $customer->photo = $uploadedFileUrl1;
         $customer->save();
-        session()->flash('message','Your new item added Successfully!');
+        session()->flash('message','New customer created Successfully!');
         return redirect()->route('admin.customer.create');
    
     
@@ -71,10 +71,10 @@ class AdminCustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($customer_id)
     {
        
-        $customer = Customer::where('id',$id)->first();
+        $customer = Customer::where('id',$customer_id)->first();
         return view('show-customer',['customer'=>$customer]);
     }
 
@@ -88,7 +88,7 @@ class AdminCustomerController extends Controller
     {
         //
         $customer = Customer::find($id);
-        return \view('edit-customer',['customer'=>$customer]);
+        return view('edit-customer',['customer'=>$customer]);
     }
 
     /**

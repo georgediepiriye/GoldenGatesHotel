@@ -44,6 +44,7 @@ Route::get('admin/rooms/edit/{room_id}',AdminEditRoomComponent::class)->name('ad
 Route::get('admin/customers',[AdminCustomerController::class,'index'])->name('admin.customers');
 Route::get('admin/customer/create',[AdminCustomerController::class,'create'])->name('admin.customer.create');
 Route::post('admin/customer/create',[AdminCustomerController::class,'store'])->name('admin.customer.store');
-Route::get('admin/customer/edit/{$customer_id}',[AdminCustomerController::class,'edit'])->name('admin.customer.edit');
-Route::post('admin/customer/edit/{$customer_id}',[AdminCustomerController::class,'update'])->name('admin.customer.update');
-Route::get('admin/customer/delete/{$customer_id}',[AdminCustomerController::class,'destroy'])->name('admin.customer.destroy');
+Route::get('admin/customer/edit/{customer_id}',[AdminCustomerController::class,'edit'])->name('admin.customer.edit');
+Route::get('admin/customer/show/{customer_id}',[AdminCustomerController::class,'show'])->name('admin.customer.show');
+Route::post('admin/customer/edit/{customer_id}',[AdminCustomerController::class,'update'])->name('admin.customer.update');
+Route::get('admin/customer/delete/{customer_id}',[AdminCustomerController::class,'destroy'])->name('admin.customer.delete');
