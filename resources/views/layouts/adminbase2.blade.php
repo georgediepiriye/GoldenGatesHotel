@@ -22,7 +22,7 @@
 
       <!-- Custom styles for this page -->
       <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-@livewireStyles()
+
 </head>
 
 <body id="page-top">
@@ -326,8 +326,8 @@
                     </ul>
 
                 </nav>
-          
-                {{ $slot }}
+              
+                @yield('content')
             </div>
         
             <footer class="sticky-footer bg-white">
@@ -394,7 +394,7 @@
      <!-- Page level custom scripts -->
      <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
  
-@livewireScripts()
+
 </body>
 
 </html>

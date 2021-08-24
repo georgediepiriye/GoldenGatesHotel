@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCustomerController;
 use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
 use App\Http\Livewire\Admin\AdminShowRoomTypeComponent;
@@ -37,3 +38,12 @@ Route::get('admin/roomtype/show/{roomtype_id}',AdminShowRoomTypeComponent::class
 Route::get('admin/rooms/create',AdminCreateRoomComponent::class)->name('admin.createroom');
 Route::get('admin/rooms',AdminRoomComponent::class)->name('admin.rooms');
 Route::get('admin/rooms/edit/{room_id}',AdminEditRoomComponent::class)->name('admin.edit.room');
+
+
+//customer
+Route::get('admin/customers',[AdminCustomerController::class,'index'])->name('admin.customers');
+Route::get('admin/customer/create',[AdminCustomerController::class,'create'])->name('admin.customer.create');
+Route::post('admin/customer/create',[AdminCustomerController::class,'store'])->name('admin.customer.store');
+Route::get('admin/customer/edit/{$customer_id}',[AdminCustomerController::class,'edit'])->name('admin.customer.edit');
+Route::post('admin/customer/edit/{$customer_id}',[AdminCustomerController::class,'update'])->name('admin.customer.update');
+Route::get('admin/customer/delete/{$customer_id}',[AdminCustomerController::class,'destroy'])->name('admin.customer.destroy');
