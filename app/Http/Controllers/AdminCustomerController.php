@@ -84,10 +84,9 @@ class AdminCustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($customer_id)
     {
-        //
-        $customer = Customer::find($id);
+        $customer = Customer::find($customer_id);
         return view('edit-customer',['customer'=>$customer]);
     }
 
@@ -98,9 +97,27 @@ class AdminCustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $customer_id)
     {
-        //
+        
+        $customer =  Customer::find($customer_id);
+       
+        $customer->full_name = $request->full_name;
+        $customer->email = $request->email;
+        $customer->mobile = $request->mobile;
+        $customer->address = $request->address;
+        
+        if($request->hasFile('photo')){
+            $uploadedFileUrl1 = Cloudinary::upload($request->file('photo')->getRealPath())->getSecurePath();
+        }else{
+            $uploadedFileUrl1 = $request->prev_photo;
+        }
+        
+      
+        $customer->photo = $uploadedFileUrl1;
+        $customer->save();
+        session()->flash('message','Customer details updated Successfully!');
+        return redirect()->route('admin.customers');
     }
 
     /**
@@ -109,10 +126,10 @@ class AdminCustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($customer_id)
     {
-        $customer = Customer::find($id);
+        $customer = Customer::find($customer_id);
         $customer->delete();
-        return redirect('customers')->with('message','Customer Deleted Successfully');
+        return redirect()->route('admin.customers')->with('message','Customer Deleted Successfully');
     }
 }

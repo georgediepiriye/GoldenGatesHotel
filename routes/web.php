@@ -46,5 +46,5 @@ Route::get('admin/customer/create',[AdminCustomerController::class,'create'])->n
 Route::post('admin/customer/create',[AdminCustomerController::class,'store'])->name('admin.customer.store');
 Route::get('admin/customer/edit/{customer_id}',[AdminCustomerController::class,'edit'])->name('admin.customer.edit');
 Route::get('admin/customer/show/{customer_id}',[AdminCustomerController::class,'show'])->name('admin.customer.show');
-Route::post('admin/customer/edit/{customer_id}',[AdminCustomerController::class,'update'])->name('admin.customer.update');
+Route::post('admin/customer/update/{customer_id}',[AdminCustomerController::class,'update'])->name('update');
 Route::get('admin/customer/delete/{customer_id}',[AdminCustomerController::class,'destroy'])->name('admin.customer.delete');

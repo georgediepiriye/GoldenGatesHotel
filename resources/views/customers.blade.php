@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Customers
-        <a href="{{ route('admin.createroom') }}" style="float: right" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.customer.create') }}" style="float: right" class="btn btn-success">Add New</a>
     </h1>
     @if (Session::has('message'))
         <div class="alert alert-success">
