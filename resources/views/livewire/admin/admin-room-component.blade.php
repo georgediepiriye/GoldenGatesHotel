@@ -18,7 +18,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>#</th>
                             <th>Room Type</th>
                             <th>Title</th>
                             <th>Action</th>

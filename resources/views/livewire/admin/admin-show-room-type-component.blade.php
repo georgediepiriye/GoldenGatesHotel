@@ -22,6 +22,13 @@
                     </tr>
                     <tr >
                     
+                        <th>Price</th>
+                        <td>₦{{ number_format($roomtype->price ) }}</td>
+                        
+                        
+                    </tr>
+                    <tr >
+                    
                         <th>Details</th>
                     <td>{{Str::ucfirst($roomtype->details ) }}</td>
                         

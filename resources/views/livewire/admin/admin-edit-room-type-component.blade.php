@@ -33,6 +33,17 @@
                         </tr>
                         <tr >
                         
+                            <th>Price</th>
+                            <td><input type="text" value="{{ $roomtype->price }}" wire:model='price' class="form-control" ></td>
+                            {{ $roomtype->price }}
+                          
+                            @error('price')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                            
+                        </tr>
+                        <tr >
+                        
                             <th>Details</th>
                             <td><textarea  wire:model="details" value="{{ $roomtype->details }}"  class="form-control"></textarea></td>
                             @error('details')

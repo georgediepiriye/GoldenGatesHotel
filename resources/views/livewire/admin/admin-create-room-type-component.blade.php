@@ -29,6 +29,13 @@
                         </tr>
                         <tr >
                         
+                            <th>Price</th>
+                            <td><input type="text" wire:model='price' class="form-control" ></td>
+                            
+                            
+                        </tr>
+                        <tr >
+                        
                             <th>Details</th>
                         <td><textarea  wire:model="details"  class="form-control"></textarea></td>
                             

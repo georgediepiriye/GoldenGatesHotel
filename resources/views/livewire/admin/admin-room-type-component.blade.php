@@ -18,8 +18,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>#</th>
                             <th>Title</th>
+                            <th>Price</th>
                             <th>Action</th>
                             
                         </tr>
@@ -30,6 +31,7 @@
                             <tr>
                                 <td>{{ $roomtype->id }}</td>
                                 <td>{{ Str::ucfirst($roomtype->title)  }}</td>
+                                <td>₦{{ number_format($roomtype->price)  }}</td>
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.show.roomtype',['roomtype_id'=>$roomtype->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a style="margin: 5px" href="{{ route('admin.edit.roomtype',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
