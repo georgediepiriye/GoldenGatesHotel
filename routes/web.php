@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
@@ -37,6 +38,8 @@ Route::get('admin/roomtype/show/{roomtype_id}',AdminShowRoomTypeComponent::class
 
 Route::get('admin/rooms/create',AdminCreateRoomComponent::class)->name('admin.createroom');
 Route::get('admin/rooms',AdminRoomComponent::class)->name('admin.rooms');
+Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
+Route::post('admin/login',[AdminController::class,'check_login'])->name('admin.check_login');
 Route::get('admin/rooms/edit/{room_id}',AdminEditRoomComponent::class)->name('admin.edit.room');
 
 

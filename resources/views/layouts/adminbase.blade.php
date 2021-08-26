@@ -10,7 +10,12 @@
     <meta name="author" content="">
 
     <title>SB Admin 2 - Dashboard</title>
-
+    @if (!Session::has('adminData'))
+       <script>
+           window.location.href="{{ route('admin.login')}}"
+       </script>
+        
+    @endif
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
