@@ -96,24 +96,12 @@
                 </div>
             </li>
 
-              <!-- Nav Item - Pages Collapse Menu -->
-              <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/customers*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Customers</span>
-                </a>
-                <div id="collapseThree" class="collapse @if(request()->is('admin/customers*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                   
-                        <a class="collapse-item" href="{{ route('admin.customer.create') }}">Add New</a>
-                        <a class="collapse-item" href="{{ route('admin.customers') }}">View All</a>
-                    </div>
-                </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.logout') }}">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Logout</span></a>
             </li>
-
-
- 
          
 
             
