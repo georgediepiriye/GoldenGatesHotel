@@ -1,14 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminRoomTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCustomerController;
-use App\Http\Livewire\Admin\AdminCreateRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
-use App\Http\Livewire\Admin\AdminShowRoomTypeComponent;
-use App\Http\Livewire\Admin\AdminEditRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminEditRoomComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminRoomTypeComponent;
 use App\Http\Livewire\Admin\AdminRoomComponent;
 
 use Illuminate\Support\Facades\Route;
@@ -31,10 +28,13 @@ Route::get('/', function () {
 
 //Admin
 Route::get('admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
-Route::get('admin/roomtype',AdminRoomTypeComponent::class)->name('admin.roomtypes');
-Route::get('admin/roomtype/create',AdminCreateRoomTypeComponent::class)->name('admin.createroomtype');
-Route::get('admin/roomtype/edit/{roomtype_id}',AdminEditRoomTypeComponent::class)->name('admin.edit.roomtype');
-Route::get('admin/roomtype/show/{roomtype_id}',AdminShowRoomTypeComponent::class)->name('admin.show.roomtype');
+Route::get('admin/roomtypes',[AdminRoomTypeController::class,'index'])->name('admin.roomtypes');
+Route::get('admin/roomtype/create',[AdminRoomTypeController::class,'create'])->name('admin.createroomtype');
+Route::post('admin/roomtype/store',[AdminRoomTypeController::class,'store'])->name('admin.store.roomtype');
+Route::get('admin/roomtype/edit/{roomtype_id}',[AdminRoomTypeController::class,'edit'])->name('admin.roomtype.edit');
+Route::post('admin/roomtype/update/{roomtype_id}',[AdminRoomTypeController::class,'update'])->name('admin.roomtype.update');
+Route::get('admin/roomtype/show/{roomtype_id}',[AdminRoomTypeController::class,'show'])->name('admin.show.roomtype');
+Route::get('admin/roomtype/delete/{roomtype_id}',[AdminRoomTypeController::class,'destroy'])->name('admin.roomtype.delete');
 
 Route::get('admin/rooms/create',AdminCreateRoomComponent::class)->name('admin.createroom');
 Route::get('admin/rooms',AdminRoomComponent::class)->name('admin.rooms');

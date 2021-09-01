@@ -1,3 +1,6 @@
+@extends('layouts.adminbase2')
+@section('content')
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -46,3 +49,4 @@
     </div>
 
 </div>
+@endsection

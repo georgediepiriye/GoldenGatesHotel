@@ -1,3 +1,5 @@
+@extends('layouts.adminbase2')
+@section('content')
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -34,8 +36,8 @@
                                 <td>₦{{ number_format($roomtype->price)  }}</td>
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.show.roomtype',['roomtype_id'=>$roomtype->id]) }}"><i class="fa fa-eye"></i></a>
-                                    <a style="margin: 5px" href="{{ route('admin.edit.roomtype',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                    <a style="margin: 5px" href="#" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete this roomtype?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteRoomType({{ $roomtype->id }})"><i class="fa fa-trash"></i></a>
+                                    <a style="margin: 5px" href="{{ route('admin.roomtype.edit',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a style="margin: 5px" href="{{ route('admin.roomtype.delete',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-danger"  onclick="confirm('Are you sure you want to delete this roomtype?')|| event.stopImmediatePropagation()"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             
@@ -48,3 +50,4 @@
     </div>
 
 </div>
+@endsection

@@ -1,3 +1,5 @@
+@extends('layouts.adminbase2')
+@section('content')
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -16,14 +18,14 @@
       
         <div class="card-body">
             <div class="table-responsive">
-                <form action="#" method="post ">
+                <form action="{{ route('admin.roomtype.update',['roomtype_id'=>$roomtype->id]) }}" method="POST">
                     @csrf
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     
-                        <tr >
+                        <tr>
                         
                             <th>Title</th>
-                            <td><input type="text" value="{{ $roomtype->title }}" wire:model='title' class="form-control" ></td>
+                            <td><input type="text" value="{{ $roomtype->title }}" name="title" class="form-control" ></td>
                             {{ $roomtype->title }}
                           
                             @error('title')
@@ -34,7 +36,7 @@
                         <tr >
                         
                             <th>Price</th>
-                            <td><input type="text" value="{{ $roomtype->price }}" wire:model='price' class="form-control" ></td>
+                            <td><input type="text" value="{{ $roomtype->price }}" name="price" class="form-control" ></td>
                             {{ $roomtype->price }}
                           
                             @error('price')
@@ -45,7 +47,7 @@
                         <tr >
                         
                             <th>Details</th>
-                            <td><textarea  wire:model="details" value="{{ $roomtype->details }}"  class="form-control"></textarea></td>
+                            <td><textarea  name="details" value="{{ $roomtype->details }}"  class="form-control">{{ $roomtype->details }}</textarea></td>
                             @error('details')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror 
@@ -53,7 +55,7 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <a href="#" wire:click="updateRoomType" class="btn btn-primary">Submit</a>
+                                <button type="submit" class="btn btn-primary">Submit</button>
 
                             </td>
                             
@@ -69,3 +71,4 @@
     </div>
 
 </div>
+@endsection

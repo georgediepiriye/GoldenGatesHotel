@@ -16,7 +16,7 @@ class AdminCustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('customers',[
+        return view('admin.customers',[
             'customers'=>$customers
         ]);
     }
@@ -28,7 +28,7 @@ class AdminCustomerController extends Controller
      */
     public function create()
     {
-       return view('create-customer');
+       return view('admin.create-customer');
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminCustomerController extends Controller
     {
        
         $customer = Customer::where('id',$customer_id)->first();
-        return view('show-customer',['customer'=>$customer]);
+        return view('admin.show-customer',['customer'=>$customer]);
     }
 
     /**
@@ -87,7 +87,7 @@ class AdminCustomerController extends Controller
     public function edit($customer_id)
     {
         $customer = Customer::find($customer_id);
-        return view('edit-customer',['customer'=>$customer]);
+        return view('admin.edit-customer',['customer'=>$customer]);
     }
 
     /**
