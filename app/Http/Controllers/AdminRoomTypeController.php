@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RoomType;
+
+use App\Models\RoomTypeImage;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class AdminRoomTypeController extends Controller
 {
@@ -52,7 +55,17 @@ class AdminRoomTypeController extends Controller
         $roomtype->details = $request->details;
         $roomtype->price = $request->price;
         $roomtype->save();
-        session()->flash('message','New Room type created Successfully!');
+
+        foreach($request->file('images') as $image){
+            $uploadedFileUrl1 = Cloudinary::upload($image->getRealPath())->getSecurePath();
+            $imageData = new RoomTypeImage();
+            $imageData->room_type_id= $roomtype->id;
+            $imageData->image_src= $uploadedFileUrl1;
+            $imageData->image_alt = $roomtype->title;
+            $imageData->save();
+        }
+
+        session()->flash('message','Room type created Successfully!');
         return redirect()->route('admin.roomtypes');
    
     }

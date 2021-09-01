@@ -18,7 +18,7 @@
       
         <div class="card-body">
             <div class="table-responsive">
-                <form action="{{ route('admin.store.roomtype') }}" method="POST">
+                <form action="{{ route('admin.roomtype.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     
@@ -42,6 +42,12 @@
                         <td><textarea  name="details" class="form-control"></textarea></td>
                             
                             
+                        </tr>
+                        <tr >
+                        
+                            <th>Gallery</th>
+                            <td><input type="file" name="images[]" multiple class="form-control" ></td>
+                   
                         </tr>
                         <tr>
                             <td colspan="2">

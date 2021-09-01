@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::get('admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
 Route::get('admin/roomtypes',[AdminRoomTypeController::class,'index'])->name('admin.roomtypes');
 Route::get('admin/roomtype/create',[AdminRoomTypeController::class,'create'])->name('admin.createroomtype');
-Route::post('admin/roomtype/store',[AdminRoomTypeController::class,'store'])->name('admin.store.roomtype');
+Route::post('admin/roomtype/store',[AdminRoomTypeController::class,'store'])->name('admin.roomtype.store');
 Route::get('admin/roomtype/edit/{roomtype_id}',[AdminRoomTypeController::class,'edit'])->name('admin.roomtype.edit');
 Route::post('admin/roomtype/update/{roomtype_id}',[AdminRoomTypeController::class,'update'])->name('admin.roomtype.update');
 Route::get('admin/roomtype/show/{roomtype_id}',[AdminRoomTypeController::class,'show'])->name('admin.show.roomtype');
