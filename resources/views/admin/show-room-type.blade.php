@@ -37,6 +37,22 @@
                         
                         
                     </tr>
+                    <tr>
+                        <th>Gallery</th>
+                        <td>
+                            <table class="table table-bordered mt-2">
+                                <tr>
+                                    @foreach ($roomtype->roomTypeImages as $image )
+                                        <td class="imgcol{{ $image->id }}">
+                                            <img style="width:100px"  src="{{ $image->image_src }}" alt="#"/>
+        
+                                        </td>
+                                    @endforeach
+                                   
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
                     
             
                     

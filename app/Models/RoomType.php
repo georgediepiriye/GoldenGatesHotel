@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RoomType extends Model
 {
     use HasFactory;
-    public function roomTypeImage(){
+    public function roomTypeImages(){
       return  $this->hasMany(RoomTypeImage::class,'room_type_id');
     }
 }

@@ -18,7 +18,7 @@
       
         <div class="card-body">
             <div class="table-responsive">
-                <form action="{{ route('admin.roomtype.update',['roomtype_id'=>$roomtype->id]) }}" method="POST">
+                <form enctype="multipart/form-data" action="{{ route('admin.roomtype.update',['roomtype_id'=>$roomtype->id]) }}" method="POST">
                     @csrf
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     
@@ -56,9 +56,10 @@
                         <tr>
                             <th>Gallery</th>
                             <td>
-                                <table class="table table-bordered">
+                                <table class="table table-bordered mt-2">
                                     <tr>
-                                        @foreach ($roomtype->roomTypeImage as $image )
+                                        <input type="file" multiple name="images[]"/>
+                                        @foreach ($roomtype->roomTypeImages as $image )
                                             <td class="imgcol{{ $image->id }}">
                                                 <img style="width:100px"  src="{{ $image->image_src }}" alt="#"/>
                                                 <p class="mt-2"><button type="button" onclick="return confirm('Are you sure you want to delete this image??')" class="btn btn-danger btn-sm delete-image" data-image-id={{ $image->id }}><i class="fa fa-trash"></i></button></p>

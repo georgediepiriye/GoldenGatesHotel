@@ -109,8 +109,21 @@ class AdminRoomTypeController extends Controller
         $roomtype =  RoomType::find($roomtype_id);
         $roomtype->title = $request->title;
         $roomtype->details = $request->details;
-        $roomtype->price = $request->price;
         $roomtype->save();
+
+        if($request->hasFile('images')){
+
+        
+            foreach($request->file('images') as $image){
+                $uploadedFileUrl1 = Cloudinary::upload($image->getRealPath())->getSecurePath();
+                $imageData = new RoomTypeImage();
+                $imageData->room_type_id= $roomtype->id;
+                $imageData->image_src= $uploadedFileUrl1;
+                $imageData->image_alt = $roomtype->title;
+                $imageData->save();
+            }
+        }
+        
         session()->flash('message','Room type updated Successfully!');
         return redirect()->route('admin.roomtypes');
     }

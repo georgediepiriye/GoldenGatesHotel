@@ -23,6 +23,7 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Price</th>
+                            <th>Gallery</th>
                             <th>Action</th>
                             
                         </tr>
@@ -34,6 +35,7 @@
                                 <td>{{ $roomtype->id }}</td>
                                 <td>{{ Str::ucfirst($roomtype->title)  }}</td>
                                 <td>₦{{ number_format($roomtype->price)  }}</td>
+                                <td>{{ count($roomtype->roomTypeImages)  }}</td>
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.show.roomtype',['roomtype_id'=>$roomtype->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a style="margin: 5px" href="{{ route('admin.roomtype.edit',['roomtype_id'=>$roomtype->id]) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
