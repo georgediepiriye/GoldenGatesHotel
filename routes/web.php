@@ -35,6 +35,7 @@ Route::get('admin/roomtype/edit/{roomtype_id}',[AdminRoomTypeController::class,'
 Route::post('admin/roomtype/update/{roomtype_id}',[AdminRoomTypeController::class,'update'])->name('admin.roomtype.update');
 Route::get('admin/roomtype/show/{roomtype_id}',[AdminRoomTypeController::class,'show'])->name('admin.show.roomtype');
 Route::get('admin/roomtype/delete/{roomtype_id}',[AdminRoomTypeController::class,'destroy'])->name('admin.roomtype.delete');
+Route::get('admin/roomtypeimage/delete/{image_id}',[AdminRoomTypeController::class,'destroyImage']);
 
 Route::get('admin/rooms/create',AdminCreateRoomComponent::class)->name('admin.createroom');
 Route::get('admin/rooms',AdminRoomComponent::class)->name('admin.rooms');

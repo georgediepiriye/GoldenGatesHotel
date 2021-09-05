@@ -128,4 +128,11 @@ class AdminRoomTypeController extends Controller
         $roomtype->delete();
         return redirect()->route('admin.roomtypes')->with('message','Roomtype Deleted Successfully');
     }
+
+    public function destroyImage($image_id)
+    {
+        $roomtypeImage = RoomTypeImage::find($image_id);
+        $roomtypeImage->delete();
+        return response()->json(['bool'=>true]);
+    }
 }

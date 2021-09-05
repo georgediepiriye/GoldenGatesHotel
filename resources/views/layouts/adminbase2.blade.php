@@ -93,12 +93,12 @@
 
               <!-- Nav Item - Pages Collapse Menu -->
               <li class="nav-item">
-                <a class="nav-link @if(!request()->is('admin/customers*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseThree"
+                <a class="nav-link @if(!request()->is('admin/customer*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Customers</span>
                 </a>
-                <div id="collapseThree" class="collapse @if(request()->is('admin/customers*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseThree" class="collapse @if(request()->is('admin/customer*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                    
                         <a class="collapse-item" href="{{ route('admin.customer.create') }}">Add New</a>
@@ -394,7 +394,7 @@
      <!-- Page level custom scripts -->
      <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
  
-
+   @yield('scripts')
 </body>
 
 </html>

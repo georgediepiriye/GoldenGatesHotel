@@ -54,6 +54,22 @@
                             
                         </tr>
                         <tr>
+                            <th>Gallery</th>
+                            <td>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        @foreach ($roomtype->roomTypeImage as $image )
+                                            <td class="imgcol{{ $image->id }}">
+                                                <img style="width:100px"  src="{{ $image->image_src }}" alt="#"/>
+                                                <p class="mt-2"><button type="button" onclick="return confirm('Are you sure you want to delete this image??')" class="btn btn-danger btn-sm delete-image" data-image-id={{ $image->id }}><i class="fa fa-trash"></i></button></p>
+                                            </td>
+                                        @endforeach
+                                       
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2">
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -71,4 +87,29 @@
     </div>
 
 </div>
+@section('scripts')
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".delete-image").on('click',function(){
+            var _img_id=$(this).attr('data-image-id');
+            var _vm=$(this);
+            $.ajax({
+                url:"{{url('admin/roomtypeimage/delete')}}/"+_img_id,
+                dataType:'json',
+                beforeSend:function(){
+                    _vm.addClass('disabled');
+                },
+                success:function(res){
+                    if(res.bool==true){
+                        $(".imgcol"+_img_id).remove();
+                    }
+                    _vm.removeClass('disabled');
+                }
+            });
+        });
+
+    });
+
+    </script>
+@endsection
 @endsection
