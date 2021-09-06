@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
 {
-    /**
+ /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -14,6 +15,10 @@ class StaffController extends Controller
     public function index()
     {
         //
+        $staffs= Staff::all();
+        return view('admin.staffs',[
+            'staffs'=> $staffs
+        ]);
     }
 
     /**
@@ -24,6 +29,7 @@ class StaffController extends Controller
     public function create()
     {
         //
+        return view('admin.create-staff');
     }
 
     /**
@@ -35,6 +41,27 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'full_name' => 'required',
+            'department_id' =>'required',
+            'photo'=>'required|mimes:jpeg,png,jpg|max:5048',
+            'bio'=>'required',
+            'salary_type'=>'required',
+            'salary_amount'=>'required|numeric'
+   
+        ]);
+        $staff = new Staff();
+        $staff->full_name = $request->full_name;
+        $staff->department_id = $request->department_id;
+        $uploadedFileUrl1 = Cloudinary::upload($photo->getRealPath())->getSecurePath();
+        $staff->photo = $uploadedFileUrl1;
+        $staff->bio = $request->bio;
+        $staff->salary_type = $request->salary_type;
+        $staff->salary_amount = $request->salary_amount;
+        $staff->save();
+        session()->flash('message','Staff created Successfully!');
+        return redirect()->route('admin.staffs');
+     
     }
 
     /**
@@ -43,9 +70,11 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($staff_id)
     {
         //
+        $staff = Staff::where('id',$staff_id)->first();
+        return view('admin.show-staff',['staff'=>$staff]);
     }
 
     /**
@@ -54,9 +83,11 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($staff_id)
     {
         //
+        $staff = Staff::where('id',$staff_id)->first();
+        return view('admin.edit-staff',['staff'=>$staff]);
     }
 
     /**
@@ -66,9 +97,30 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $staff_id)
     {
         //
+     
+        $request->validate([
+            'full_name' => 'required',
+            'department_id' =>'required',
+            'photo'=>'required|mimes:jpeg,png,jpg|max:5048',
+            'bio'=>'required',
+            'salary_type'=>'required',
+            'salary_amount'=>'required|numeric'
+   
+        ]);
+        $staff =  Staff::find($staff_id);
+        $staff->full_name = $request->full_name;
+        $staff->department_id = $request->department_id;
+        $uploadedFileUrl1 = Cloudinary::upload($image->getRealPath())->getSecurePath();
+        $staff->photo = $uploadedFileUrl1;
+        $staff->bio = $request->bio;
+        $staff->salary_type = $request->salary_type;
+        $staff->salary_amount = $request->salary_amount;
+        $staff->save();
+        session()->flash('message','Staff updated Successfully!');
+        return redirect()->route('admin.staffs');
     }
 
     /**
@@ -77,8 +129,12 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($staff_id)
     {
         //
+        $staff = Staff::find($staff_id);
+        $staff->delete();
+        return redirect()->route('admin.staffs')->with('message','Staff Deleted Successfully');
     }
+
 }
