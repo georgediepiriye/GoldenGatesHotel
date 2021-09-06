@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminRoomTypeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\StaffDepartmentController;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
 use App\Http\Livewire\Admin\AdminEditRoomComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
@@ -43,6 +44,16 @@ Route::get('admin/login',[AdminController::class,'login'])->name('admin.login');
 Route::get('admin/logout',[AdminController::class,'logout'])->name('admin.logout');
 Route::post('admin/login',[AdminController::class,'check_login'])->name('admin.check_login');
 Route::get('admin/rooms/edit/{room_id}',AdminEditRoomComponent::class)->name('admin.edit.room');
+
+
+Route::get('admin/departments',[StaffDepartmentController::class,'index'])->name('admin.departments');
+Route::get('admin/department/create',[StaffDepartmentController::class,'create'])->name('admin.department.create');
+Route::post('admin/department/store',[StaffDepartmentController::class,'store'])->name('admin.department.store');
+Route::get('admin/department/edit/{department_id}',[StaffDepartmentController::class,'edit'])->name('admin.department.edit');
+Route::post('admin/department/update/{department_id}',[StaffDepartmentController::class,'update'])->name('admin.department.update');
+Route::get('admin/department/show/{department_id}',[StaffDepartmentController::class,'show'])->name('admin.show.department');
+Route::get('admin/roomtype/delete/{department_id}',[StaffDepartmentController::class,'destroy'])->name('admin.department.delete');
+
 
 
 //customer

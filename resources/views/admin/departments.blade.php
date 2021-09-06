@@ -4,7 +4,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Staff Departments
-        <a href="{{ route('admin.createdepartments') }}" style="float: right" class="btn btn-success">Add New</a>
+        <a href="{{ route('admin.department.create') }}" style="float: right" class="btn btn-success">Add New</a>
     </h1>
     @if (Session::has('message'))
         <div class="alert alert-success">
