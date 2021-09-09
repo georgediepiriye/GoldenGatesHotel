@@ -3,8 +3,8 @@
 
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">
+     <!-- Page Heading -->
+     <h1 class="h3 mb-2 text-gray-800">Staffs
         <a href="{{ route('admin.staff.create') }}" style="float: right" class="btn btn-success">Add New</a>
     </h1>
     @if (Session::has('message'))
@@ -23,6 +23,8 @@
                         <tr>
                             <th>#</th>
                             <th>Full name</th>
+                            <th>Department</th>
+                            <th>Photo</th>
                             <th>Action</th>
                             
                         </tr>
@@ -33,6 +35,8 @@
                             <tr>
                                 <td>{{ $staff->id }}</td>
                                 <td>{{Str::ucfirst($staff->full_name) }}</td>
+                                <td>{{Str::ucfirst($staff->department->title) }}</td>
+                                <td><img style="width: 100px" src="{{ $staff->photo }}" alt=""></td>
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.staff.show',['staff_id'=>$staff->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.staff.edit',['staff_id'=>$staff->id]) }}" class="btn btn-primary" style="margin: 5px"><i class="fa fa-edit"></i></a>

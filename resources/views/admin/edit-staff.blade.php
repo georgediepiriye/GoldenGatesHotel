@@ -35,10 +35,12 @@
                                 
                                     <th>Department<span class="text-danger">*</span></th>
                                     <td>
-                                        <select name="department_id" value="{{ $staff->department_id}}">
-                                            <option value="#"><----Select----></option>
+                                        <select name="department_id">
+                                            <option value="0"><----Select----></option>
                                             @foreach ($departments as $department )
-                                                <option value="{{ $department->id }}">{{ $department->title }}</option>
+                                                <option @if ($staff->department_id==$department->id) selected
+                                                    
+                                                @endif value="{{ $department->id }}">{{ $department->title }}</option>
                                             @endforeach
                                             
     
@@ -74,8 +76,12 @@
                                 
                                     <th>Salary Type<span class="text-danger">*</span></th>
                                     <td>
-                                        <input type="radio" name="salary_type" value="daily"> Daily
-                                        <input type="radio" name="salary_type" value="monthly"> Monthly
+                                        <input type="radio" @if ($staff->salary_type=='daily') checked
+                                            
+                                        @endif name="salary_type" value="daily"> Daily
+                                        <input type="radio"  @if ($staff->salary_type=='monthly') checked
+                                            
+                                        @endif name="salary_type" value="monthly"> Monthly
                                     </td>
                                 
                                 </tr>

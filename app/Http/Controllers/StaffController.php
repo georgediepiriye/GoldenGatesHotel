@@ -112,7 +112,7 @@ class StaffController extends Controller
         $request->validate([
             'full_name' => 'required',
             'department_id' =>'required',
-            'photo'=>'required|mimes:jpeg,png,jpg|max:5048',
+            'photo'=>'mimes:jpeg,png,jpg|max:5048',
             'bio'=>'required',
             'salary_type'=>'required',
             'salary_amount'=>'required|numeric'
