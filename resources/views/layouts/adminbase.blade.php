@@ -129,6 +129,22 @@
                 </div>
             </li>
 
+             <!-- Nav Item - Pages Collapse Menu -->
+             <li class="nav-item">
+                <a class="nav-link @if(!request()->is('admin/department*')) collapsed @endif" href="#" data-toggle="collapse" data-target="#collapseFive"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Staffs</span>
+                </a>
+                <div id="collapseFive" class="collapse @if(request()->is('admin/department*')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                   
+                        <a class="collapse-item" href="{{ route('admin.staff.create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ route('admin.staffs') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.logout') }}">
                     <i class="fas fa-fw fa-sign-out-alt"></i>

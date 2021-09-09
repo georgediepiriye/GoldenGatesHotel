@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminRoomTypeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\AdminCustomerController;
 use App\Http\Controllers\StaffDepartmentController;
 use App\Http\Livewire\Admin\AdminCreateRoomComponent;
@@ -64,3 +65,13 @@ Route::get('admin/customer/edit/{customer_id}',[AdminCustomerController::class,'
 Route::get('admin/customer/show/{customer_id}',[AdminCustomerController::class,'show'])->name('admin.customer.show');
 Route::post('admin/customer/update/{customer_id}',[AdminCustomerController::class,'update'])->name('update');
 Route::get('admin/customer/delete/{customer_id}',[AdminCustomerController::class,'destroy'])->name('admin.customer.delete');
+
+
+//staff
+Route::get('admin/staffs',[StaffController::class,'index'])->name('admin.staffs');
+Route::get('admin/staff/create',[StaffController::class,'create'])->name('admin.staff.create');
+Route::post('admin/staff/create',[StaffController::class,'store'])->name('admin.staff.store');
+Route::get('admin/staff/edit/{staff_id}',[StaffController::class,'edit'])->name('admin.staff.edit');
+Route::get('admin/staff/show/{staff_id}',[StaffController::class,'show'])->name('admin.staff.show');
+Route::post('admin/staff/update/{staff_id}',[StaffController::class,'update'])->name('update');
+Route::get('admin/staff/delete/{staff_id}',[StaffController::class,'destroy'])->name('admin.staff.delete');

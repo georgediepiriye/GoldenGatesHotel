@@ -109,7 +109,7 @@ class AdminRoomTypeController extends Controller
         $roomtype =  RoomType::find($roomtype_id);
         $roomtype->title = $request->title;
         $roomtype->details = $request->details;
-        $roomtype->save();
+     
 
         if($request->hasFile('images')){
 
@@ -123,6 +123,7 @@ class AdminRoomTypeController extends Controller
                 $imageData->save();
             }
         }
+        $roomtype->save();
         
         session()->flash('message','Room type updated Successfully!');
         return redirect()->route('admin.roomtypes');

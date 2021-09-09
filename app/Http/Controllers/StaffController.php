@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\Department;
 use Illuminate\Http\Request;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class StaffController extends Controller
 {
@@ -29,7 +31,8 @@ class StaffController extends Controller
     public function create()
     {
         //
-        return view('admin.create-staff');
+        $departments = Department::all();
+        return view('admin.create-staff',['departments'=>$departments]);
     }
 
     /**
@@ -53,7 +56,7 @@ class StaffController extends Controller
         $staff = new Staff();
         $staff->full_name = $request->full_name;
         $staff->department_id = $request->department_id;
-        $uploadedFileUrl1 = Cloudinary::upload($photo->getRealPath())->getSecurePath();
+        $uploadedFileUrl1 = Cloudinary::upload($request->file('photo')->getRealPath())->getSecurePath();
         $staff->photo = $uploadedFileUrl1;
         $staff->bio = $request->bio;
         $staff->salary_type = $request->salary_type;
@@ -87,7 +90,12 @@ class StaffController extends Controller
     {
         //
         $staff = Staff::where('id',$staff_id)->first();
-        return view('admin.edit-staff',['staff'=>$staff]);
+        $departments = Department::all();
+        return view('admin.edit-staff',[
+            'staff'=>$staff,
+            'departments'=>$departments
+
+        ]);
     }
 
     /**
@@ -113,8 +121,14 @@ class StaffController extends Controller
         $staff =  Staff::find($staff_id);
         $staff->full_name = $request->full_name;
         $staff->department_id = $request->department_id;
-        $uploadedFileUrl1 = Cloudinary::upload($image->getRealPath())->getSecurePath();
-        $staff->photo = $uploadedFileUrl1;
+
+        if($request->hasFile('photo')){
+            $uploadedFileUrl1 = Cloudinary::upload($photo->getRealPath())->getSecurePath();
+            $staff->photo = $uploadedFileUrl1;
+        }else{
+            $staff->photo = $request->prev_photo;
+        }
+       
         $staff->bio = $request->bio;
         $staff->salary_type = $request->salary_type;
         $staff->salary_amount = $request->salary_amount;
