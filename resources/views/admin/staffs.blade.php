@@ -40,6 +40,7 @@
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.staff.show',['staff_id'=>$staff->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.staff.edit',['staff_id'=>$staff->id]) }}" class="btn btn-primary" style="margin: 5px"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('admin.staff.payment',['staff_id'=>$staff->id]) }}" class="btn btn-dark" style="margin: 5px"><i class="fa fa-credit-card"></i></a>
                                     <a href="{{ route('admin.staff.delete',['staff_id'=>$staff->id]) }}" class="btn btn-danger" style="margin: 5px"  onclick="confirm('Are you sure you want to delete this staff?')|| event.stopImmediatePropagation()"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
