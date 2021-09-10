@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Staff;
+use App\Models\StaffPayment;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
@@ -149,6 +150,30 @@ class StaffController extends Controller
         $staff = Staff::find($staff_id);
         $staff->delete();
         return redirect()->route('admin.staffs')->with('message','Staff Deleted Successfully');
+    }
+
+    public function addPayment($staff_id)
+    {
+        $staff = Staff::find($staff_id);
+        return view('staffpayment.create',[
+            'staff'=>$staff
+        ]);
+    }
+
+
+    public function savePayment(Request $request,$staff_id){
+        
+        $request->validate([
+            'amount' => 'required',
+            'payment_date' =>'required'
+        ]);
+        $staffpayment = new StaffPayment();
+        $staffpayment->staff_id = $staff_id;
+        $staffpayment->amount = $request->amount;
+        $staffpayment->payment_date = $request->payment_date;
+        $staffpayment->save();
+        session()->flash('message','Payment saved Successfully!');
+        return redirect()->route('admin.staffs');
     }
 
 }

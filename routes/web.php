@@ -76,3 +76,4 @@ Route::get('admin/staff/show/{staff_id}',[StaffController::class,'show'])->name(
 Route::post('admin/staff/update/{staff_id}',[StaffController::class,'update'])->name('update');
 Route::get('admin/staff/delete/{staff_id}',[StaffController::class,'destroy'])->name('admin.staff.delete');
 Route::get('admin/staff/payment/{staff_id}',[StaffController::class,'addPayment'])->name('admin.staff.payment');
+Route::post('admin/staff/payment/{staff_id}',[StaffController::class,'savePayment'])->name('admin.staff.payment');
