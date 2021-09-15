@@ -152,6 +152,15 @@ class StaffController extends Controller
         return redirect()->route('admin.staffs')->with('message','Staff Deleted Successfully');
     }
 
+
+    public function allPayments($staff_id){
+        $payments = StaffPayment::where('staff_id',$staff_id)->get();
+        return view('staffpayment.index',[
+            'payments'=>$payments
+        ]);
+    }
+
+
     public function addPayment($staff_id)
     {
         $staff = Staff::find($staff_id);
