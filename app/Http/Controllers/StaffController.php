@@ -189,4 +189,11 @@ class StaffController extends Controller
         return redirect()->route('admin.staffs');
     }
 
+
+    public function deletePayment($payment_id, $staff_id){
+     StaffPayment::where('id',$payment_id)->delete();
+       session()->flash('message','Payment deleted Successfully!');
+       return redirect()->route('admin.staff.payments',['staff_id'=>$staff_id]);
+    }
+
 }

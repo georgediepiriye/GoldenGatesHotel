@@ -78,3 +78,4 @@ Route::get('admin/staff/delete/{staff_id}',[StaffController::class,'destroy'])->
 Route::get('admin/staff/payment/{staff_id}',[StaffController::class,'addPayment'])->name('admin.staff.payment');
 Route::get('admin/staff/payments/{staff_id}',[StaffController::class,'allPayments'])->name('admin.staff.payments');
 Route::post('admin/staff/payment/{staff_id}',[StaffController::class,'savePayment'])->name('admin.staff.payment');
+Route::get('admin/staff/payment/delete/{payment_id}/{staff_id}',[StaffController::class,'deletePayment']);
