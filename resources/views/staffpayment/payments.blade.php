@@ -4,8 +4,8 @@
 <div class="container-fluid">
 
      <!-- Page Heading -->
-     <h1 class="h3 mb-2 text-gray-800">Staffs
-        <a href="{{ route('admin.staff.create') }}" style="float: right" class="btn btn-success">Add New</a>
+     <h1 class="h3 mb-2 text-gray-800">{{ Str::ucfirst($staff->full_name)}}'s Payments
+        <a href="{{ route('admin.staff.payment',['staff_id'=>$staff->id]) }}" style="float: right" class="btn btn-success">Add New</a>
     </h1>
     @if (Session::has('message'))
         <div class="alert alert-success">
@@ -22,25 +22,23 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Full name</th>
-                            <th>Department</th>
-                            <th>Photo</th>
+                            <th>Amount</th>
+                            <th>Payment Date</th>
                             <th>Action</th>
                             
                         </tr>
                     </thead>
                  
                     <tbody>
-                        @foreach ($staffs as $staff)
+                        @foreach ($payments as $payment)
                             <tr>
-                                <td>{{ $staff->id }}</td>
-                                <td>{{Str::ucfirst($staff->full_name) }}</td>
-                                <td>{{Str::ucfirst($staff->department->title) }}</td>
-                                <td><img style="width: 100px" src="{{ $staff->photo }}" alt=""></td>
+                                <td>{{ $payment->id }}</td>
+                                <td>₦{{number_format($payment->amount )}}</td>
+                                <td>{{$payment->payment_date }}</td>
                                 <td>
                                     <a style="margin: 5px" href="{{ route('admin.staff.show',['staff_id'=>$staff->id]) }}"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('admin.staff.edit',['staff_id'=>$staff->id]) }}" class="btn btn-primary" style="margin: 5px"><i class="fa fa-edit"></i></a>
-                                    <a href="{{ route('admin.staff.payments',['staff_id'=>$staff->id]) }}" class="btn btn-dark" style="margin: 5px"><i class="fa fa-credit-card"></i></a>
+                                    <a href="{{ route('admin.staff.payment',['staff_id'=>$staff->id]) }}" class="btn btn-dark" style="margin: 5px"><i class="fa fa-credit-card"></i></a>
                                     <a href="{{ route('admin.staff.delete',['staff_id'=>$staff->id]) }}" class="btn btn-danger" style="margin: 5px"  onclick="confirm('Are you sure you want to delete this staff?')|| event.stopImmediatePropagation()"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

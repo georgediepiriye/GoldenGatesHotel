@@ -141,7 +141,7 @@ class StaffController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $staff_id
      * @return \Illuminate\Http\Response
      */
     public function destroy($staff_id)
@@ -152,15 +152,18 @@ class StaffController extends Controller
         return redirect()->route('admin.staffs')->with('message','Staff Deleted Successfully');
     }
 
-
+//shows all payments a staff has received
     public function allPayments($staff_id){
+        $staff = Staff::find($staff_id);
         $payments = StaffPayment::where('staff_id',$staff_id)->get();
-        return view('staffpayment.index',[
-            'payments'=>$payments
+        return view('staffpayment.payments',[
+            'payments'=>$payments,
+            'staff'=>$staff
         ]);
     }
 
 
+//directs to staff payment page
     public function addPayment($staff_id)
     {
         $staff = Staff::find($staff_id);
@@ -170,6 +173,7 @@ class StaffController extends Controller
     }
 
 
+//adds a new payment for a staff
     public function savePayment(Request $request,$staff_id){
         
         $request->validate([
